@@ -1,7 +1,7 @@
 modfileVersion: "v1"
 id: github.com/SENERGY-Platform/mgw-zigbee-dc-module/bridging
-name: Z-Wave Device-Connector Bridged
-version: v0.0.1
+name: Zigbee Device-Connector Bridged
+version: v0.0.2
 type: device-connector
 deploymentType: single
 license: "Apache License 2.0"
@@ -115,7 +115,7 @@ configs:
           - mgw-zigbee-dc
     userInput:
       type: text
-      name: Z-Wave Device ID Prefix
+      name: Zigbee Device ID Prefix
       group: zigbee
   zigbeeTopicPrefixPrefix:
     dataType: string
@@ -158,4 +158,4 @@ inputGroups:
   platform:
     name: "Platform"
   zigbee:
-    name: "Z-Wave"
+    name: "Zigbee"
