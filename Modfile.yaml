@@ -19,6 +19,10 @@ dependencies:
           template: "tcp://{ref}:1881"
           services:
             - mgw-zigbee-dc
+        - refVar: ZIGBEE2MQTT_CONFIG_SERVER
+          template: "tcp://{ref}:1881"
+          services:
+            - zigbee2mqtt
 hostResources:
   device:
     userInput:
@@ -33,6 +37,9 @@ services:
     image: koenkk/zigbee2mqtt:1.37.0
     runConfig:
       pseudoTTY: true
+    ports:
+      - port: 8080
+        hostPort: 8092
   mgw-zigbee-dc:
     name: mgw-zigbee-dc
     image: ghcr.io/senergy-platform/mgw-zigbee-dc:v1.0.4
@@ -61,6 +68,27 @@ configs:
     value: "Europe/Berlin"
     targets:
       - refVar: TZ
+        services:
+          - zigbee2mqtt
+  zigbee2mqttSerialPort:
+    dataType: string
+    value: "/dev/zigbee"
+    targets:
+      - refVar: ZIGBEE2MQTT_CONFIG_SERIAL_PORT
+        services:
+          - zigbee2mqtt
+  zigbee2mqttBaseTopic:
+    dataType: string
+    value: "zigbee2mqtt"
+    targets:
+      - refVar: ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC
+        services:
+          - zigbee2mqtt
+  zigbee2mqttPermitJoin:
+    dataType: string
+    value: "true"
+    targets:
+      - refVar: ZIGBEE2MQTT_CONFIG_PERMIT_JOIN
         services:
           - zigbee2mqtt
   mqttClientId:
