@@ -1,8 +1,8 @@
 modfileVersion: "v1"
 id: github.com/SENERGY-Platform/mgw-zigbee-dc-module
 name: Zigbee Device-Connector
-description: "after deployment the zigbee2mqtt ui has to be used to configure the used zigbee controller, mqtt-broker, permit_join etc"
-version: v0.0.12
+description: "after deployment the zigbee2mqtt ui has to be used to configure the permit_join"
+version: v0.0.13
 type: device-connector
 deploymentType: single
 license: "Apache License 2.0"
@@ -115,13 +115,6 @@ configs:
     value: "zigbee2mqtt"
     targets:
       - refVar: ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC
-        services:
-          - zigbee2mqtt
-  zigbee2mqttPermitJoin:
-    dataType: string
-    value: "true"
-    targets:
-      - refVar: ZIGBEE2MQTT_CONFIG_PERMIT_JOIN
         services:
           - zigbee2mqtt
   mqttClientId:
